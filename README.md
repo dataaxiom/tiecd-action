@@ -8,7 +8,7 @@ The following inputs can be used as `step.with` keys:
 
 | Name       | Type   | Default | Description                                                                   |
 |------------|--------|---------|-------------------------------------------------------------------------------|
-| `registry` | String |         | Server address of Docker registry. If not set then will default to Docker Hub |
+| `files`    | String |         | Server address of Docker registry. If not set then will default to Docker Hub |
 | `username` | String |         | Username for authenticating to the Docker registry                            |
 | `password` | String |         | Password or personal access token for authenticating the Docker registry      |
 | `ecr`      | String | `auto`  | Specifies whether the given registry is ECR (`auto`, `true` or `false`)       |
@@ -28,7 +28,7 @@ with:
   args: 'build image'
 ```
 
-### Applicaiton Deployment
+### Application Deployment
 
 ```yaml
 uses: actions/dataaxiom/tiecd-action@main

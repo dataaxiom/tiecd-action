@@ -1,42 +1,57 @@
-name: 'Tiecd Deploy Action'
-description: 'Runs Tiecd Deploy' 
+name: 'Tiecd'
+description: 'The CICD toolchain to simplify building and deploying applications into the cloud.' 
+auth: 'dataaxiom'
+branding:
+  icon: 'send'
+  color: 'blue'
+
 inputs:
   basedir:
-    description: 'directory to find tie.yml files (default: . )'
+    description: 'directory containing tie.yml and deployment files  (default: . )'
     required: false
   files:
     description: 'override files to run'
     required: false
   files_commit_prefix:
-    description: 'files string prefixes to search for in commit message, i.e. files= (default: "file|files")'
+    description: 'string prefixes to search for in commit message to specify files to process, i.e. file=tieapp.yaml (default: "file|files")'
     required: false
   apps:
-    description: 'override apps to run'
+    description: 'override which apps to run'
     required: false
   apps_commit_prefix:
-    description: 'app string prefixes to search for in commit message, i.e. apps= (default: "app|apps|run|update)"'
+    description: 'string prefixes to search for commit message to specify apps to process, i.e. apps=myapp (default: "app|apps|run|update)"'
     required: false
   file_prefix:
     description: 'file prefix for tie.yml files, (defaults: "tie")'
     required: false
-  trace_artifacts:
-    description: 'output generated and expanded artifacts'
+  app_names_required:
+    description: 'only execute the app names that are passed at runtime'
+    required: false
+  ignore_errors:
+    description: 'ignore errors keep processing other apps'
+    required: false
+  verbose:
+    description: 'increase logging to include all tracing and additional informational logging'
+    required: false
+  trace_generated:
+    description: 'log generated artifacts'
+    required: false
+  trace_tie_file:
+    description: 'log generated and expanded tie files'
     required: false
   trace_commands:
-    description: 'output command executions'
+    description: 'log executed commands'
     required: false
-  apps_required:
-    description: 'only execute the app anmes that are set'
+  banner:
+    description: 'show TIECD banner header during execution'
     required: false
-  disable_banner:
-    description: 'disable banner header'
+  create_namespaces:
+    description: 'auto create namespaces if necessary'
     required: false
+
 runs:
-  using: 'docker'
-  image: docker://ghcr.io/dataaxiom/tiecd:dev
-  entrypoint: 'tiecd'
-  args:
-    - 'deploy'
-branding:
-  icon: 'send'
-  color: 'blue'
+  using: 'composite'
+  steps:
+    - uses: docker://ghcr.io/dataaxiom/tiecd:main-k8s
+      run: tiecd deploy
+
