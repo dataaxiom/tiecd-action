@@ -54,7 +54,6 @@ inputs:
     required: false
 
 runs:
-runs:
   using: 'docker'
   image: 'Dockerfile'
 #  using: 'composite'
