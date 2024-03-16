@@ -12,4 +12,4 @@ echo "rophan"
 echo $INPUT_WORKSPACE
 echo "mars"
 IMAGE=ghcr.io/dataaxiom/tiecd:$INPUT_IMAGE
-exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v $INPUT_WORKSPACE:/scratch --entrypoint=bash $IMAGE -c "cd /scratch; ls -al; ${INPUT_RUN//$'\n'/;}"
+exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" $INPUT_WORKSPACE --entrypoint=bash $IMAGE -c "cd /scratch; ls -al; ${INPUT_RUN//$'\n'/;}"

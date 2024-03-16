@@ -14,7 +14,6 @@ inputs:
     description: 'command to run'
   workspace:
     required: true
-    decription: 'set to \$\{\{ github.workspace }}'
   basedir:
     description: 'directory containing tie.yml and deployment files  (default: . )'
     required: false
