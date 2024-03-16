@@ -54,4 +54,5 @@ runs:
   steps:
     - uses: docker://ghcr.io/dataaxiom/tiecd:main-k8s
     - run: tiecd deploy
+      shell: bash
 
