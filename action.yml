@@ -12,9 +12,7 @@ inputs:
   run:
     required: true
     description: 'command to run'
-  rohan:
-    required: true
-  workspace:
+  options:
     required: true
   basedir:
     description: 'directory containing tie.yml and deployment files  (default: . )'
