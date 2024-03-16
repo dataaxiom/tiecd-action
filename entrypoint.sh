@@ -15,7 +15,7 @@ fi
 ARGS=$INPUT_OPTIONS
 while IFS='=' read -r -d '' n v; do
     printf "'%s'='%s'\n" "$n" "$v"
-    if [[ $n == INPUT* ]]; then
+    if [[ $n == INPUT* ]] && [ ! -z "$v" ] ; then
        ARGS="$ARGS -e $n=$v"
     fi
 done < <(env -0)
