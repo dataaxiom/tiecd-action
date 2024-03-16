@@ -7,7 +7,7 @@
 #if [ ! -z $INPUT_DOCKER_NETWORK ];
 #then INPUT_OPTIONS="$INPUT_OPTIONS --network $INPUT_DOCKER_NETWORK"
 #fi
-INPUT_RUN="tiecd deploy"
+INPUT_RUN="pwd; ls -al ; tiecd deploy"
 echo Using image: $INPUT_VERSION
 ls -al
 pwd
