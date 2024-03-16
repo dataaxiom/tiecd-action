@@ -12,4 +12,5 @@ set
 echo $INPUT_OPTIONS
 echo $TIECD_WORKSPACE
 echo $INPUT_RUN
-exec docker run -v "/var/run/docker.sock":"/var/run/docker.sock" $INPUT_OPTIONS --entrypoint=$INPUT_SHELL $INPUT_IMAGE -c "${INPUT_RUN//$'\n'/;}"
+IMAGE=ghcr.io/dataaxiom/tiecd:$INPUT_IMAGE
+exec docker run -rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v $INPUT_WORKSPACE:/scratch --entrypoint=bash $IMAGE tiecd $INPUT_RUN"
