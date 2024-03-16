@@ -53,7 +53,7 @@ inputs:
 
 runs:
   using: 'composite'
-  steps
+  steps:
    - name: run docker with dynamic image name
      run: 'docker run ${{ inputs.image }}'
      shell: bash
