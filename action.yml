@@ -53,4 +53,4 @@ inputs:
 
 runs:
   using: 'docker'
-  image: ghcr.io/dataaxiom/tiecd:${{ github.event.inputs.version }}  
+  image: 'Dockerfile'
