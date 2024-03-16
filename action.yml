@@ -6,7 +6,7 @@ branding:
   color: 'blue'
 
 inputs:
-  version:
+  image:
     required: true
   basedir:
     description: 'directory containing tie.yml and deployment files  (default: . )'
@@ -52,5 +52,8 @@ inputs:
     required: false
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'composite'
+  steps
+   - name: run docker with dynamic image name
+     run: 'docker run ${{ inputs.image }}'
+     shell: bash
