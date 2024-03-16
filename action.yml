@@ -12,6 +12,8 @@ inputs:
   run:
     required: true
     description: 'command to run'
+  rohan:
+    required: true
   workspace:
     required: true
   basedir:
