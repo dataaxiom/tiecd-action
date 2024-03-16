@@ -8,4 +8,4 @@
 #then INPUT_OPTIONS="$INPUT_OPTIONS --network $INPUT_DOCKER_NETWORK"
 #fi
 INPUT_RUN="tiecd --help"
-exec docker run -v "/var/run/docker.sock":"/var/run/docker.sock" ghcr.io/dataaxiom/tiecd:$INPUT_version -c "${INPUT_RUN//$'\n'/;}"
+exec docker run -v "/var/run/docker.sock":"/var/run/docker.sock" ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
