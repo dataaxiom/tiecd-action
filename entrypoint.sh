@@ -7,8 +7,8 @@
 #if [ ! -z $INPUT_DOCKER_NETWORK ];
 #then INPUT_OPTIONS="$INPUT_OPTIONS --network $INPUT_DOCKER_NETWORK"
 #fi
-INPUT_RUN="pwd; ls -al ; tiecd deploy"
+INPUT_RUN="pwd; ls -al /scratch ; tiecd deploy"
 echo Using image: $INPUT_VERSION
 ls -al
 pwd
-exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v "$(pwd)":"/scratch" --workdir=/scratch   --entrypoint=bash ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
+exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v "$(pwd)":"/scratch"  --entrypoint=bash ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
