@@ -20,4 +20,8 @@ while IFS='=' read -r -d '' n v; do
     fi
 done < <(env -0)
 
+echo "rohan"
+echo $ARGS
+echo "rohan"
+
 exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" $ARGS --entrypoint=bash $IMAGE -c "cd /work; ${INPUT_RUN//$'\n'/;}"
