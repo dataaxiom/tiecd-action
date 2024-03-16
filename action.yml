@@ -55,5 +55,5 @@ runs:
   using: 'composite'
   steps:
    - name: run docker with dynamic image name
-     run: 'docker run ${{ inputs.image }} tiecd deploy'
+     run: 'docker run ${{ inputs.image }} ls -al'
      shell: bash
