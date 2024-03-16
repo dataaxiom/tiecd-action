@@ -53,5 +53,5 @@ runs:
   using: 'composite'
   steps:
     - uses: docker://ghcr.io/dataaxiom/tiecd:main-k8s
-      shell: tiecd deploy
+    - run: tiecd deploy
 
