@@ -6,6 +6,8 @@ branding:
   color: 'blue'
 
 inputs:
+  version:
+    required: true
   basedir:
     description: 'directory containing tie.yml and deployment files  (default: . )'
     required: false
