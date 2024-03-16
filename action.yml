@@ -52,6 +52,3 @@ inputs:
 runs:
   using: 'docker'
   image: ghcr.io/dataaxiom/tiecd:${{ inputs.basedir }}  
-    - run: ls -al
-      shell: bash
-
