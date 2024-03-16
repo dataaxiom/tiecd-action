@@ -10,4 +10,14 @@ if [[ $INPUT_IMAGE == *"/"* ]]; then
 else
   IMAGE=ghcr.io/dataaxiom/tiecd:$INPUT_IMAGE
 fi
-exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" $INPUT_OPTIONS --entrypoint=bash $IMAGE -c "cd /work; ${INPUT_RUN//$'\n'/;}"
+
+## pass INPUT env variables through
+ARGS=$INPUT_OPTIONS
+while IFS='=' read -r -d '' n v; do
+    printf "'%s'='%s'\n" "$n" "$v"
+    if [[ $n == INPUT* ]]; then;
+       ARGS="$ARGS -e $n=$v"
+    fi
+done < <(env -0)
+
+exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" $ARGS --entrypoint=bash $IMAGE -c "cd /work; ${INPUT_RUN//$'\n'/;}"
