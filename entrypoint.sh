@@ -9,4 +9,5 @@
 #fi
 INPUT_RUN="tiecd deploy"
 echo Using image: $INPUT_VERSION
+ls -al
 exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" ghcr.io/dataaxiom/tiecd:$INPUT_VERSION $INPUT_RUN
