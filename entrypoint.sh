@@ -9,7 +9,6 @@
 #fi
 
 ls -al /github
-INPUT_RUN="pwd; ls -al / ; tiecd deploy"
+INPUT_RUN="pwd; ls -al /scratch; tiecd deploy"
 echo Using image: $INPUT_VERSION
-exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock"  --entrypoint=bash ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
-#exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v "$(pwd)":"/scratch"  --entrypoint=bash ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
+exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v "$(pwd)":"/scratch"  --entrypoint=bash ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
