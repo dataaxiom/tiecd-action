@@ -31,6 +31,4 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-    TIECD_WORKSPACE=${{ github.workspace }}
 
