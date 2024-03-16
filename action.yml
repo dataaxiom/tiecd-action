@@ -10,6 +10,8 @@ inputs:
     required: true
   args:
     required: true
+  workspace:
+    required: true
   basedir:
     description: 'directory containing tie.yml and deployment files  (default: . )'
     required: false
