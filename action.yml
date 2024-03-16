@@ -8,10 +8,10 @@ branding:
 inputs:
   image:
     required: true
-    description: 'the image tag to use, else a full docker image url;
-  args:
+    description: 'the image tag to use, else a full docker image url'
+  run:
     required: true
-    description: 'arguments to pass to tiecd command'
+    description: 'command to run'
   workspace:
     required: true
     decription: 'set to ${{ github.workspace }}'
