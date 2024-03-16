@@ -1,0 +1,42 @@
+name: 'Tiecd Deploy Action'
+description: 'Runs Tiecd Deploy' 
+inputs:
+  basedir:
+    description: 'directory to find tie.yml files (default: . )'
+    required: false
+  files:
+    description: 'override files to run'
+    required: false
+  files_commit_prefix:
+    description: 'files string prefixes to search for in commit message, i.e. files= (default: "file|files")'
+    required: false
+  apps:
+    description: 'override apps to run'
+    required: false
+  apps_commit_prefix:
+    description: 'app string prefixes to search for in commit message, i.e. apps= (default: "app|apps|run|update)"'
+    required: false
+  file_prefix:
+    description: 'file prefix for tie.yml files, (defaults: "tie")'
+    required: false
+  trace_artifacts:
+    description: 'output generated and expanded artifacts'
+    required: false
+  trace_commands:
+    description: 'output command executions'
+    required: false
+  apps_required:
+    description: 'only execute the app anmes that are set'
+    required: false
+  disable_banner:
+    description: 'disable banner header'
+    required: false
+runs:
+  using: 'docker'
+  image: docker://ghcr.io/dataaxiom/tiecd:dev
+  entrypoint: 'tiecd'
+  args:
+    - 'deploy'
+branding:
+  icon: 'send'
+  color: 'blue'
