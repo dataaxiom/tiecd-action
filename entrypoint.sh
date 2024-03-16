@@ -10,4 +10,5 @@
 INPUT_RUN="tiecd deploy"
 echo Using image: $INPUT_VERSION
 ls -al
-exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" --entrypoint=bash ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
+pwd
+exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v $(pwd}:/scratch --workdir=/scratch   --entrypoint=bash ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
