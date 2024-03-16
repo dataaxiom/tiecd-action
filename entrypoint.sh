@@ -12,6 +12,6 @@ ls -al /github
 INPUT_RUN="pwd; ls -al /scratch; tiecd deploy"
 echo Using image: $INPUT_VERSION
 mkdir /scratch
-cp -r $(pwd) /scratch
+cp -r /github/workspace/* /scratch
 ls -al /scratch
 exec docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/scratch":"/scratch" --workdir=/scratch  --entrypoint=bash ghcr.io/dataaxiom/tiecd:$INPUT_VERSION -c "${INPUT_RUN//$'\n'/;}"
