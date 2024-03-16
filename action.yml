@@ -1,65 +1,33 @@
-name: 'Tiecd'
-description: 'The CICD toolchain to simplify building and deploying applications into the cloud.' 
-auth: 'dataaxiom'
-branding:
-  icon: 'send'
-  color: 'blue'
-
+# action.yml
+name: 'Docker Run Action'
+description: 'Run a command in a new container'
 inputs:
   image:
+    description: 'Image'
     required: true
-  args:
-    required: true
-  workspace:
-    required: true
-  basedir:
-    description: 'directory containing tie.yml and deployment files  (default: . )'
+  options:
+    description: 'Options'
     required: false
-  files:
-    description: 'override files to run'
+  run:
+    description: 'Run command in container'
     required: false
-  files_commit_prefix:
-    description: 'string prefixes to search for in commit message to specify files to process, i.e. file=tieapp.yaml (default: "file|files")'
+  shell:
+    description: 'Use a specific shell'
     required: false
-  apps:
-    description: 'override which apps to run'
+    default: sh
+  registry:
+    description: 'Registry'
     required: false
-  apps_commit_prefix:
-    description: 'string prefixes to search for commit message to specify apps to process, i.e. apps=myapp (default: "app|apps|run|update)"'
+  username:
+    description: 'Username'
     required: false
-  file_prefix:
-    description: 'file prefix for tie.yml files, (defaults: "tie")'
+  password:
+    description: 'Password'
     required: false
-  app_names_required:
-    description: 'only execute the app names that are passed at runtime'
+  docker_network:
+    description: 'Docker Network ID'
+    default: ${{ job.container.network }}
     required: false
-  ignore_errors:
-    description: 'ignore errors keep processing other apps'
-    required: false
-  verbose:
-    description: 'increase logging to include all tracing and additional informational logging'
-    required: false
-  trace_generated:
-    description: 'log generated artifacts'
-    required: false
-  trace_tie_file:
-    description: 'log generated and expanded tie files'
-    required: false
-  trace_commands:
-    description: 'log executed commands'
-    required: false
-  banner:
-    description: 'show TIECD banner header during execution'
-    required: false
-  create_namespaces:
-    description: 'auto create namespaces if necessary'
-    required: false
-
 runs:
   using: 'docker'
   image: 'Dockerfile'
-#  using: 'composite'
-#  steps:
-#   - name: run docker with dynamic image name
-#     run: 'docker run ${{ inputs.image }} ls -al'
-#     shell: bash
