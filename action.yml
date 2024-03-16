@@ -8,6 +8,8 @@ branding:
 inputs:
   image:
     required: true
+  args:
+    required: true
   basedir:
     description: 'directory containing tie.yml and deployment files  (default: . )'
     required: false
